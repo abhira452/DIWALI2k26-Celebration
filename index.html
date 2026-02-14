@@ -225,17 +225,36 @@ function drawSinglePhoto(img, x, y, size, glowColor) {
 }
 
 function drawTexts() {
-  const jump = Math.sin(Date.now() / 400) * 40;
-  ctx.font = "bold 56px Poppins";
+  const jump = Math.sin(Date.now() / 400) * (h * 0.03);
+
+  // Screen ke hisaab se font size
+  const mainFontSize = Math.min(w * 0.06, 56);
+  const nameFontSize = Math.min(w * 0.05, 40);
+
   ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  // Top text
+  ctx.font = `bold ${mainFontSize}px Poppins`;
   ctx.shadowColor = "gold";
-  ctx.shadowBlur = 50;
+  ctx.shadowBlur = 30;
   ctx.fillStyle = "rgba(255,255,210,0.95)";
-  ctx.fillText("✨ दीपावली की हार्दिक शुभकामनाएं ✨", w/2, h/2 - 240 + jump);
-  ctx.font = "bold 40px Poppins";
+  ctx.fillText(
+    "✨ दीपावली की हार्दिक शुभकामनाएं ✨",
+    w / 2,
+    h / 2 - h * 0.2 + jump
+  );
+
+  // Name text
+  ctx.font = `bold ${nameFontSize}px Poppins`;
   ctx.shadowColor = "orange";
-  ctx.fillText(userName, w/2, h/2 + 240 + jump);
+  ctx.fillText(
+    userName,
+    w / 2,
+    h / 2 + h * 0.2 + jump
+  );
 }
+
 
 
 function animate() {
@@ -258,4 +277,5 @@ function startCelebration() {
 
 </script>
 </body>
+
 </html>
